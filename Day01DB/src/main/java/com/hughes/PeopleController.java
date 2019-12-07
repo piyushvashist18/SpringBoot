@@ -24,7 +24,7 @@ public class PeopleController {
 	public String getInfo() {
 		String meta = "";
 		meta += "Class is " + personDao.getClass().getName() + "<br/>";
-		for (Class interfaceObj : personDao.getClass().getInterfaces()) {
+		for (Class<?> interfaceObj : personDao.getClass().getInterfaces()) {
 			meta += "<br/> " + interfaceObj.getName();
 		}
 		meta += "<br><br/>";

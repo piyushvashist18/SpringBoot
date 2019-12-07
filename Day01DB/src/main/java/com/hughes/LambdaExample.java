@@ -22,11 +22,11 @@ interface Calculator {
 public class LambdaExample {
 
 	public static void main(String[] args) {
-		Calculator calc = (a, b) -> {
-			return a + b;
-		};
+		/*
+		 * Calculator calc = (a, b) -> { return a + b; };
+		 */
 		
-		Calculator sum = (a, b) -> a + b;
+		//Calculator sum = (a, b) -> a + b;
 		
 		Greetings greetingsOld = new GreetingsImpl();
 		greetingsOld.greet();
