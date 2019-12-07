@@ -2,8 +2,8 @@
 
 ```javascript
 const instructor = {
-	email: "prabhu.bits@gmail.com",
-	blog: "http://healthycoder.in",
+	email: "akhiljn03@gmail.com",
+	blog: "",
 	books: ["Spring 3.0 Black book","Practical Ext JS 4"]
 } 
 ```
