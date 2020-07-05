@@ -1,4 +1,4 @@
-To get dependencies different
+Add all your main dependencies in pom.xml of this application and follow below below steps to get dependencies different
 1. run build.bat
 2. run deploy.bat
 3. Click on below link
