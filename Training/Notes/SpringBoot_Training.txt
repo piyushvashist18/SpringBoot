@@ -1,0 +1,65 @@
+=====================================
+Microservice Topics
+
+Config Server/Client
+Eureka Discovery  Server/Cleint - 8761
+ZUUL Gateway Server - Generally 5000
+ActiveMQ - JMS Template - 8716
+
+Sleuth - Logging Service
+	ZIPKIN - Like Splunk logs feeding server 9411 - Add Zipkin Clinet
+	
+Actuator - Management Server - Generally 9000
+Swagger UI
+UI App
+Hysterix Fallback
+RestTemplate
+Banner.txt
+Use application yml
+Jenkins Pipeline
+
+Actuators, 
+Hysterix Dashboard - Add Hysterix Dashboard
+	- Turbine server does the work
+	http://localhost:9014/actuator/hystrix.stream
+	http://localhost:8080/hystrix
+
+Using Spring tools suit 4
+spring boot 2 which internally use spring 5
+
+@SpringBootApplication - Starting point of application
+
+@Bean can be be declared in a class under @Configuration. To autowire and use two beans with same names use qualifier
+
+@Component and @Service Differene
+
+---
+All static files like html should be created under static folders
+
+[src]
+	[main]
+		[java]
+		[resource]
+			[static] -> html, css, js
+		[webapp]
+			*.jsp
+			
+awwapp.com
+
+Netflix - spring-cloud-starter-netflix-hystrix- @HystrixCommand 
+	- Dont use it if servvice is taking even a second or more than that to respond.
+
+Use Eureka Discovery Client - 8761 Default Port
+	registerWithEureka: false - Becuase we donet want server also to be registered.
+
+Start on different server - create maven build - go to target folder	
+java -jar -Dserver.port=7002 -Dmanagement.server.port=9002 square-service-0.0.1-SNAPSHOT.jar
+
+Load Balancer - No need to worry about port - wh have to pass only application name  -- ZUUL
+
+
+Email: prabu.bits@gmail.com
+healthycoder.in
+youtube: healthyuserprabhu
+
+Function Programming in Java
