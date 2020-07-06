@@ -21,3 +21,26 @@
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+
+
+# Compiled source #
+###################
+*.class
+*.prefs
+*.classpath
+*.project
+*.factorypath
+**/target
+**/dist
+**/.settings
+
+# Logs #
+######################
+*.log
+bin/
+target/
+dist/
+
+**/webapp/bulkjobsyncup/
+**/bulkjobsyncup/node_modules/
+*.sts4-cache
