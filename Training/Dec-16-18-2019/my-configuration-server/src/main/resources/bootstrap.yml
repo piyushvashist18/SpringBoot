@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: my-configuration-server
+    
+  profiles:
+    active: native
+   
+
+server:
+  port: 6000    

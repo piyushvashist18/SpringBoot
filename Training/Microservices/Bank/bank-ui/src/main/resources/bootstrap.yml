@@ -1,0 +1,42 @@
+spring:
+  application:
+    name: bank-ui
+  mvc:
+    view:
+      prefix: /
+      suffix: .jsp
+      
+  cloud:
+    config:
+      uri: http://localhost:6000  zipkin:    base-url: http://localhost:9411
+
+
+server:
+  port: 8080
+  
+info:
+  name: bank-ui
+
+eureka:  client:
+    enabled: true    service-url:      defeaultZone: http://localhost:8761/eureka
+ 
+account:
+  #base-url: http://localhost:5000/account-service/account
+  base-url: http://localhost:8011/account
+  
+management:
+  server:
+    port: 9014
+  endpoint:
+    beans:
+      enabled: true
+    health:
+      show-details: ALWAYS
+    env:
+      enabled: true
+    shutdown:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: '*' 

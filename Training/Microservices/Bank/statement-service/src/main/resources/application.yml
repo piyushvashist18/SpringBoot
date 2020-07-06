@@ -1,0 +1,48 @@
+server:
+  port: 8012
+  
+spring:
+  application:
+    name: statement-service
+  jpa:
+    show-sql: true
+  mvc:
+    view:
+      prefix: /
+      suffix: .jsp
+  datasource:
+    username: root
+    password: root
+    url: jdbc:mysql://localhost:3306/statements
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  activemq:
+    user: admin
+    password: admin
+    broker-url: tcp://localhost:61616
+
+queues:
+  producer: statement.events
+  consumer: account.events
+  
+eureka:
+  client:
+    enabled: true
+    service-url:
+      defeaultZone: http://localhost:8761/eureka
+      
+management:
+  server:
+    port: 9013
+  endpoint:
+    beans:
+      enabled: true
+    health:
+      show-details: ALWAYS
+    env:
+      enabled: true
+    shutdown:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: '*' 

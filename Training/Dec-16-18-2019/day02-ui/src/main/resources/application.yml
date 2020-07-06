@@ -1,0 +1,35 @@
+spring:
+  application:
+    name: day02-ui
+
+server:
+  port: 8080
+  
+square:
+  base-url: http://localhost:5000/square-service/square
+  
+eureka:
+   client:
+     enabled: false
+     serviceUrl:
+       defaultZone: http://localhost:8761/eureka
+    
+
+
+management:
+  server:
+    port: 9080
+  endpoint:
+    beans:
+      enabled: true
+    health:
+      show-details: ALWAYS
+    env:
+      enabled: true
+    shutdown:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: '*'        
+

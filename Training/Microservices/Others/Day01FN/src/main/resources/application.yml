@@ -1,0 +1,4 @@
+spring:  mvc:    view:      prefix: /
+      suffix: .jsp  application:    name: day1-microservice    server:  port: 8080  palindrome:  base:    url: http://localhost:8081/palindrome  
+      
+     

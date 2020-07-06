@@ -1,0 +1,12 @@
+spring:
+  mvc:
+    view:
+      prefix: /
+      suffix: .jsp
+  
+  application:
+    name: day01-ui 
+    
+palindrome:
+  base:
+    url: http://localhost:8081/v1/api/palindrome    

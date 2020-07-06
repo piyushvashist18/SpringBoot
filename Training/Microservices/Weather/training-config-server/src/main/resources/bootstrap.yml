@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: training-config-server
+    
+  profiles:
+    active: native
+
+eureka:
+  client:
+    enabled: true
+    service-url:
+      defeaultZone: http://localhost:8761/eurek   
+
+server:
+  port: 6000    

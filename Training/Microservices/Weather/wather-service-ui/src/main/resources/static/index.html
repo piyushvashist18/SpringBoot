@@ -1,0 +1,31 @@
+<html>
+	<head>
+		<script src="jquery-3.4.1.min.js"></script>
+		<script>
+			$().ready(() => {
+				$("#checkTemp").on("click", () => {
+					let city = $("#city").val();
+					
+					$.ajax({
+						url: `/weather/${city}`,
+						success(response) {
+							$("#results").text(response);
+						},
+						error(response) {
+							let error = JSON.parse(response.responseText);
+							$("#results").text(error.message);
+						}
+					})					
+				});
+				
+			});
+		</script>
+	</head>
+	<body>
+		<h1>Weather Application</h1>
+		<input type="text" id="city" placeholder="Enter city name"/>
+		<br/>
+		<button id="checkTemp">Check Temperature</button>
+		<h1 id="results"></h1>
+	</body>
+</html>

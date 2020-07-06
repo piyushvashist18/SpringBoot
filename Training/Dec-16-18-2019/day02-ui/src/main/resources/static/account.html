@@ -1,0 +1,56 @@
+<html>
+	<head>
+		<script src="jquery-3.4.1.min.js"></script>
+		<script>
+			let operationId = null;
+			$().ready(() => {
+				$("#depositbutton").on("click", () => {
+					let accountNumber = parseInt($("#accountnumber").val());
+					let amount = parseInt($("#amount").val());
+					
+					$.ajax({
+						method: "PUT",
+						data: {
+							accountNumber,
+							amount,
+							operation: "deposit"
+						},
+						url: `/bank`,
+						success(response) {
+							$("#results").text(response);
+							operationId = window.setInterval("pollResponse()", 1000);
+						},
+						error(response) {
+							let error = JSON.parse(response.responseText);
+							$("#results").text(error.message);
+						}
+					})
+					
+				});
+			});
+			
+			let pollResponse = () => {
+				let accountNumber = $("#accountnumber").val();
+				$.ajax({
+					url: `/bank/status/${accountNumber}`,
+					method: "GET",
+					success(response) {
+						$("#results").text(response);
+						if(!response.includes("still")) {
+							window.clearInterval(operationId);
+						}
+					}
+					
+				});	
+			};
+		</script>
+	</head>
+	<body>
+		<h1>Account</h1>
+		<input type="text" id="accountnumber" placeholder="Account number"/><br/>
+		<input type="text" id="amount" placeholder="Amount"/>
+		<br/>
+		<button id="depositbutton">Deposit</button>
+		<h1 id="results"></h1>
+	</body>
+</html>

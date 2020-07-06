@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: stock-sender
+    
+  activemq:
+    user: admin
+    password: admin
+    broker-url: tcp://localhost:61616
+
+server:
+  port: 9090
+  

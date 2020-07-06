@@ -1,0 +1,5 @@
+welcome:
+  message: Welcome to YML file configuration
+
+server:
+  port: 8080  

@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: movie-api
+
+  activemq:
+    user: admin
+    password: admin
+    broker-url: tcp://localhost:61616
+
+server:
+  port: 7001    
+
+movie:
+  input: movie.input
+  output: movie.output  

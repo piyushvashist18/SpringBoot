@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: account-service
+
+  activemq:
+    user: admin
+    password: admin
+    broker-url: tcp://localhost:61616
+  
+  datasource:
+    url: jdbc:mysql://localhost/accountsdb
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: durasoft
+
+server:
+  port: 7003
+
+queues:
+  producer: account.events
+  consumer: statement.events
+      
