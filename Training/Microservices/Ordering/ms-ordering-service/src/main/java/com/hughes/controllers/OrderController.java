@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
+import com.hughes.entities.Inventory;
+
 @RestController
 @RequestMapping("/order")
 public class OrderController {
@@ -17,29 +19,25 @@ public class OrderController {
 	@Autowired
 	RestTemplate restTemplate;
 	
-	@GetMapping("/create")
-	public String crateOrder() {
+	@GetMapping("/validate/inventory")
+	public String validateOrder() {
+		Inventory inv = feignClient.getItem("Book");
 		
-		String response = feignClient.checkInventory(1, "Test");
-		
-		if(response != null) {
-			return "Order Placed Successfully with feign response:" + response;
-		} 
-		
-		return "Unable to place orders at this time";
+		if(inv.getQuantity() > 0) {
+			return "Success";
+		}
+		return "false";
 	}
 	
-	@GetMapping("/view")
-	public String viewOrder() {
+	@GetMapping("/validate/inventory/rest")
+	public String validateOrderRest() {
+		Inventory inv = restTemplate.exchange("http://ms-inventory-service//inventory/get/Book", 
+				HttpMethod.GET, null, Inventory.class).getBody();
 		
-		String response = restTemplate.exchange("http://ms-inventory-service//inventory/check?count=1&item=Test", 
-				HttpMethod.GET, null, String.class).getBody();
-		
-		if(response != null) {
-			return "Order Placed Successfully with rest response:" + response;
-		} 
-		
-		return "Unable to place orders at this time";
+		if(inv.getQuantity() > 0) {
+			return "Success";
+		}
+		return "false";
 	}
 	
 }
