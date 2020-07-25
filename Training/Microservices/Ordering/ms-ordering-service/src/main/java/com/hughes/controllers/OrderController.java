@@ -1,43 +1,32 @@
 package com.hughes.controllers;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpMethod;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.client.RestTemplate;
 
-import com.hughes.entities.Inventory;
+import com.hughes.entities.OrderInfo;
+import com.hughes.services.OrderingService;
 
 @RestController
 @RequestMapping("/order")
 public class OrderController {
 	
 	@Autowired
-	FeignClientInterface feignClient;
+	private OrderingService service;
 	
-	@Autowired
-	RestTemplate restTemplate;
-	
-	@GetMapping("/validate/inventory")
-	public String validateOrder() {
-		Inventory inv = feignClient.getItem("Book");
-		
-		if(inv.getQuantity() > 0) {
-			return "Success";
-		}
-		return "false";
+	@PostMapping("/create")
+	public OrderInfo createOrder(@RequestBody OrderInfo ordInfo) {
+		return service.createOrder(ordInfo);
 	}
 	
-	@GetMapping("/validate/inventory/rest")
-	public String validateOrderRest() {
-		Inventory inv = restTemplate.exchange("http://ms-inventory-service//inventory/get/Book", 
-				HttpMethod.GET, null, Inventory.class).getBody();
-		
-		if(inv.getQuantity() > 0) {
-			return "Success";
-		}
-		return "false";
+	@GetMapping("/list")
+	public List<OrderInfo> getAllOrders(){
+		return service.getAllOrders();
 	}
 	
 }
