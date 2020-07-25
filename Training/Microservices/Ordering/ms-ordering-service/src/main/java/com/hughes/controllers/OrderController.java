@@ -20,7 +20,7 @@ public class OrderController {
 	private OrderingService service;
 	
 	@PostMapping("/create")
-	public String createOrder(@RequestBody OrderInfo ordInfo) {
+	public Object createOrder(@RequestBody OrderInfo ordInfo) {
 		return service.createOrder(ordInfo);
 	}
 	

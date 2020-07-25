@@ -31,6 +31,12 @@ public class OrderInfo {
 		this.id = id;
 	}
 
+	@Override
+	public String toString() {
+		return "OrderInfo [id=" + id + ", item=" + item + ", quantity=" + quantity + ", totalAmount=" + totalAmount
+				+ ", user=" + user + ", address=" + address + ", createDate=" + createDate + "]";
+	}
+
 	public String getItem() {
 		return item;
 	}

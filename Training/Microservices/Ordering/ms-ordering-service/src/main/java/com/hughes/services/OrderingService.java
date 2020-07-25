@@ -24,7 +24,7 @@ public class OrderingService {
 	@Autowired
 	Configuration config;
 
-	public String createOrder(OrderInfo ordInfo) {
+	public Object createOrder(OrderInfo ordInfo) {
 		
 		System.out.println("Configured minimum order quantity:" + config.getMoq());
 				
@@ -47,7 +47,7 @@ public class OrderingService {
 				inv.setQuantity(inv.getQuantity() - ordInfo.getQuantity());
 				feignClient.updateItem(inv);
 				
-				return "Order Placed successfully: " + ordInfo.toString();
+				return ordInfo;
 			} else {
 				return "Availble Quantity of " + ordInfo.getItem() + " is: " + inv.getQuantity();
 			}
