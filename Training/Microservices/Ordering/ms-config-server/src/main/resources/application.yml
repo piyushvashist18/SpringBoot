@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: ms-config-server
+server:
+  port: 6000
+
+eureka:
+  client:
+    enabled: true
+    service-url:
+      defeaultZone: http://localhost:8761/eureka
+         
+
+# URI of GIT repo containing properties
+spring:
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/akhiljn03/SpringBoot/tree/master/Training/Microservices/Ordering
+          searchPaths: Configuration # path to properties from root of repo 
