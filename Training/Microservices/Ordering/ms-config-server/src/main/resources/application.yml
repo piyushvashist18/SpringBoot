@@ -1,21 +1,42 @@
 spring:
   application:
     name: ms-config-server
+  cloud: 
+    config:
+      server:
+        git: # URI of GIT repo containing properties
+          uri: https://github.com/akhiljn03/SpringBoot
+          searchPaths: Training/Microservices/Ordering/Configuration
+          # path to properties from root of repo
+           
 server:
-  port: 6000
+  port: 8011
 
 eureka:
   client:
     enabled: true
     service-url:
       defeaultZone: http://localhost:8761/eureka
-         
-
-# URI of GIT repo containing properties
-spring:
-  cloud:
-    config:
-      server:
-        git:
-          uri: https://github.com/akhiljn03/SpringBoot/tree/master/Training/Microservices/Ordering
-          searchPaths: Configuration # path to properties from root of repo 
+      
+management:
+  server:
+    port: 9011
+  endpoint:
+    beans:
+      enabled: true
+    health:
+      show-details: ALWAYS
+    env:
+      enabled: true
+    shutdown:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: '*' 
+        
+#Actuator properties for /info Implementation
+info:
+  app:
+    name: Config Server
+    description: Config Server    

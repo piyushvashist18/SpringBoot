@@ -26,6 +26,8 @@ public class OrderingService {
 
 	public String createOrder(OrderInfo ordInfo) {
 		
+		System.out.println("Configured minimum order quantity:" + config.getMoq());
+				
 		if(ordInfo.getQuantity() > config.getMoq()) {
 			
 			//Validate Item and Available Quantity in Inventory

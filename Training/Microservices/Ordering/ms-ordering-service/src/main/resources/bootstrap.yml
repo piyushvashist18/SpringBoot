@@ -7,9 +7,10 @@ spring:
   data:
     mongodb:
       uri: mongodb+srv://dssuser:dssuser@generic-retry-cluster.abymq.gcp.mongodb.net/ms_training?retryWrites=true&w=majority
-  config:
-    cloud:
-      uri: htp://localhost:6000
+  cloud:
+    config:
+      uri: http://localhost:8011
+      profile: default
 
 eureka:
   client:
