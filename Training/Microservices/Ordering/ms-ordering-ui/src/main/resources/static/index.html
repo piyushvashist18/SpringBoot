@@ -1,0 +1,49 @@
+<html>
+	<head>
+		<script src="jquery-3.4.1.min.js"></script>
+		<script>
+			$().ready(() => {
+				$("#depositbutton").on("click", () => {
+					let accountNo = parseInt($("#accountNumber").val());
+					let amount = parseInt($("#amount").val());
+					$.ajax({
+						url: `/bank/deposit/${accountNo}/${amount}`,
+						success(response) {
+							$("#results").text(response);
+						},
+						error(response) {
+							let error = JSON.parse(response.responseText);
+							$("#results").text(error.message);
+						}
+					})					
+				});
+				
+				$("#withdrawbutton").on("click", () => {
+					let accountNo = parseInt($("#accountNumber").val());
+					let amount = parseInt($("#amount").val());
+					$.ajax({
+						url: `/bank/withdraw/${accountNo}/${amount}`,
+						success(response) {
+							$("#results").text(response);
+						},
+						error(response) {
+							let error = JSON.parse(response.responseText);
+							$("#results").text(error.message);
+						}
+					})					
+				});
+				
+			});
+		</script>
+	</head>
+	<body>
+		<h1>Bank Application</h1>
+		<input type="text" id="accountNumber" placeholder="Enter account number"/>
+		<br/>
+		<input type="text" id="amount" placeholder="Enter amount"/>
+		<br/>
+		<button id="depositbutton">Deposit</button>
+		<button id="withdrawbutton">Withdraw</button>
+		<h1 id="results"></h1>
+	</body>
+</html>

@@ -1,0 +1,40 @@
+server:
+  port: 8030
+  
+
+spring:
+  application:
+    name: ms-inventory-service
+  data:
+    mongodb:
+      uri: mongodb+srv://dssuser:dssuser@generic-retry-cluster.abymq.gcp.mongodb.net/ms_training?retryWrites=true&w=majority
+  
+  
+eureka:
+  client:
+    enabled: true
+    service-url:
+      defeaultZone: http://localhost:8761/eureka
+      
+management:
+  server:
+    port: 9030
+  endpoint:
+    beans:
+      enabled: true
+    health:
+      show-details: ALWAYS
+    env:
+      enabled: true
+    shutdown:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: '*' 
+        
+#Actuator properties for /info Implementation
+info:
+  app:
+    name: Inventory Service
+    description: Inventory Service for Order UI
